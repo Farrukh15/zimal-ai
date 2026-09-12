@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        /* Theme guard: only redirect when light is EXPLICITLY stored.
+           Fixed: was '!== dark', which bounced every visitor whose storage
+           was empty/unavailable straight back to the light page. */
+        (function () {
+            try {
+                if (localStorage.getItem('zimal-theme') === 'light') {
+                    location.replace('../index.html');
+                }
+            } catch (e) {}
+        })();
+    </script>
+
+    <meta name="description" content="Zimal AI - Enterprise AI Automation Agency specializing in n8n, Make.com, AI Agents, and custom workflow automation.">
+    <meta name="keywords" content="AI automation, n8n, Make.com, workflow automation, AI agents, API integration">
+    <title>Zimal AI — Enterprise AI Automation Agency</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;450;500;600;700;800;900&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" href="img/favicon.png?v=2">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <img src="img/favicon.png" alt="Zimal AI icon" class="logo-icon-img">
+                <div class="logo-text-group">
+                    <img src="img/logo-icon_2.svg" alt="Zimal AI" class="logo-wordmark-img">
+                    <span class="logo-tagline">Automate <span class="amp">&amp;</span> Grow</span>
+                </div>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#process" class="nav-link">Process</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#faq" class="nav-link">FAQ</a>
+                <a href="#contact" class="nav-link nav-cta">Book Consultation</a>
+            </div>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Switch to light mode" title="Switch to light mode">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                </button>
+                <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-bg">
+            <div class="gradient-orb orb-1"></div>
+            <div class="gradient-orb orb-2"></div>
+            <div class="gradient-orb orb-3"></div>
+        </div>
+        <div class="hero-grid"></div>
+        <div class="container hero-container">
+            <div class="hero-content">
+                <div class="hero-badge" data-animate="fade-up">
+                    <span class="badge-dot"></span>
+                    Enterprise AI Automation Agency
+                </div>
+                <h1 class="hero-title" data-animate="fade-up" data-delay="100">
+                    Automate Your Business with<br>
+                    <span class="gradient-text">AI-Powered Workflows</span>
+                </h1>
+                <p class="hero-subtitle" data-animate="fade-up" data-delay="200">
+                    Custom AI automations and voice agents — built with n8n, Make.com, Vapi, Retell, Airtable, OpenAI, Claude, Gemini, and hundreds of integrations in between.
+                </p>
+                <div class="hero-ctas" data-animate="fade-up" data-delay="300">
+                    <a href="#contact" class="btn btn-primary">
+                        <span>Book Free Consultation</span>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4.167 10h11.666m0 0L10 4.167M15.833 10L10 15.833" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                </div>
+                <div class="hero-badges" data-animate="fade-up" data-delay="400">
+                    <div class="tech-badge"><span class="check">✓</span> AI Agents</div>
+                    <div class="tech-badge"><span class="check">✓</span> n8n</div>
+                    <div class="tech-badge"><span class="check">✓</span> Make.com</div>
+                    <div class="tech-badge"><span class="check">✓</span> OpenAI</div>
+                    <div class="tech-badge"><span class="check">✓</span> APIs</div>
+                </div>
+            </div>
+            <div class="hero-visual" data-animate="fade-left" data-delay="200">
+                <div class="workflow-canvas">
+                    <!--
+                    ════════════════════════════════════════════════════════════════
+                    WORKFLOW COORDINATE SYSTEM  —  6 NODES  —  SVG viewBox 400×300
+                    ════════════════════════════════════════════════════════════════
+                    Node Centers (SVG x,y  →  CSS left%, top%):
+                    ┌───────────┬─────────────┬────────────┬─────────────┐
+                    │ Node      │ SVG (x,y)   │ CSS left%  │ CSS top%    │
+                    ├───────────┼─────────────┼────────────┼─────────────┤
+                    │ Trigger   │ (63.9,184.2)│ 15.97%     │ 61.40%      │
+                    │ AI Agent  │ (130.7,67.8)│ 32.67%     │ 22.60%      │
+                    │ Database  │ (270.3,42.1)│ 67.58%     │ 14.03%      │
+                    │ Filter    │ (357.6,122.2)│ 89.40%    │ 40.73%      │
+                    │ CRM       │ (307.8,231.5)│ 76.95%    │ 77.17%      │
+                    │ Action    │ (146.7,250.8)│ 36.67%    │ 83.60%      │
+                    └───────────┴─────────────┴────────────┴─────────────┘
+                    NOTE: All coordinates rotated 10° clockwise around (200,150)
+                    ════════════════════════════════════════════════════════════════
+                    -->
+
+                    <!-- Node 1: Trigger — Golden Yellow fill + hairline white outline -->
+                    <div class="workflow-node node-trigger" data-node="1">
+                        <div class="node-circle">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="#FBBF24" stroke="white" stroke-width="0.3" stroke-linejoin="round">
+                                <path d="M14.35 1.8 4.7 14.7a.34.34 0 0 0 .27.54h7.34l-2.62 7.91a.34.34 0 0 0 .61.25l9.61-12.97a.34.34 0 0 0-.27-.54l-7.09-.06 2.14-7.98a.34.34 0 0 0-.32-.32Z"/>
+                            </svg>
+                        </div>
+                        <div class="node-label">Trigger</div>
+                    </div>
+
+                    <!-- Node 2: AI Agent — Clean robot face + hairline white outline -->
+                    <div class="workflow-node node-ai" data-node="2">
+                        <div class="node-circle">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="#C084FC" stroke="white" stroke-width="0.3" stroke-linejoin="round">
+                                <!-- Antenna -->
+                                <line x1="12" y1="3" x2="12" y2="7" stroke="white" stroke-width="0.6" stroke-linecap="round"/>
+                                <circle cx="12" cy="3" r="1.2" fill="white" stroke="none"/>
+                                <!-- Head -->
+                                <rect x="5" y="7" width="14" height="12" rx="2.5"/>
+                                <!-- Eyes (small, proportional) -->
+                                <circle cx="9.5" cy="12" r="1" fill="white" stroke="none"/>
+                                <circle cx="14.5" cy="12" r="1" fill="white" stroke="none"/>
+                                <!-- Mouth (thin line) -->
+                                <line x1="10" y1="15.5" x2="14" y2="15.5" stroke="white" stroke-width="0.6" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <div class="node-label">AI Agent</div>
+                    </div>
+
+                    <!-- Node 3: Database — 4-stack cylinder + hairline white outline -->
+                    <div class="workflow-node node-db" data-node="3">
+                        <div class="node-circle">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="#8B5CF6" stroke="white" stroke-width="0.3" stroke-linejoin="round">
+                                <!-- Top cap -->
+                                <ellipse cx="12" cy="5" rx="8" ry="2.5"/>
+                                <!-- Side outline -->
+                                <path d="M4 5v12c0 1.38 3.58 2.5 8 2.5s8-1.12 8-2.5V5"/>
+                                <!-- Stack lines -->
+                                <path d="M4 9c0 1.38 3.58 2.5 8 2.5s8-1.12 8-2.5"/>
+                                <path d="M4 13c0 1.38 3.58 2.5 8 2.5s8-1.12 8-2.5"/>
+                                <path d="M4 17c0 1.38 3.58 2.5 8 2.5s8-1.12 8-2.5"/>
+                            </svg>
+                        </div>
+                        <div class="node-label">Database</div>
+                    </div>
+
+                    <!-- Node 4: Filter — Blue fill + hairline white outline -->
+                    <div class="workflow-node node-filter" data-node="4">
+                        <div class="node-circle">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="#3B82F6" stroke="white" stroke-width="0.3" stroke-linejoin="round">
+                                <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/>
+                            </svg>
+                        </div>
+                        <div class="node-label">Filter</div>
+                    </div>
+
+                    <!-- Node 5: CRM — Cyan fill + hairline white outline -->
+                    <div class="workflow-node node-crm" data-node="5">
+                        <div class="node-circle">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="#06B6D4" stroke="white" stroke-width="0.3" stroke-linejoin="round">
+                                <rect x="3" y="3" width="7" height="7" rx="1"/>
+                                <rect x="14" y="3" width="7" height="7" rx="1"/>
+                                <rect x="14" y="14" width="7" height="7" rx="1"/>
+                                <rect x="3" y="14" width="7" height="7" rx="1"/>
+                            </svg>
+                        </div>
+                        <div class="node-label">CRM</div>
+                    </div>
+
+                    <!-- Node 6: Action — Proper checkmark tick + hairline white outline -->
+                    <div class="workflow-node node-action" data-node="6">
+                        <div class="node-circle">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="#10B981" stroke="white" stroke-width="0.3" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+                            </svg>
+                        </div>
+                        <div class="node-label">Action</div>
+                    </div>
+
+                    <!-- SVG Connection Lines -->
+                    <svg class="connection-lines" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid meet">
+                        <defs>
+                            <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#8B5CF6" stop-opacity="0.9"/>
+                                <stop offset="50%" stop-color="#3B82F6" stop-opacity="0.95"/>
+                                <stop offset="100%" stop-color="#06B6D4" stop-opacity="0.9"/>
+                            </linearGradient>
+                            <filter id="lineGlow" x="-50%" y="-50%" width="200%" height="200%">
+                                <feGaussianBlur stdDeviation="3" result="blur"/>
+                                <feMerge>
+                                    <feMergeNode in="blur"/>
+                                    <feMergeNode in="SourceGraphic"/>
+                                </feMerge>
+                            </filter>
+                        </defs>
+
+                        <!-- 1. Trigger(63.9,184.2) → AI Agent(130.7,67.8) -->
+                        <path class="conn-line" d="M70,99 Q136,21 200,26" />
+
+                        <!-- 2. AI Agent(130.7,67.8) → Database(270.3,42.1) -->
+                        <path class="conn-line" d="M200,26 Q264,17 329.1,94" />
+
+                        <!-- 3. Database(270.3,42.1) → Filter(357.6,122.2) -->
+                        <path class="conn-line" d="M329.1,94 Q352,157.5 325.1,213" />
+
+                        <!-- 4. Filter(357.6,122.2) → CRM(307.8,231.5) -->
+                        <path class="conn-line" d="M325.1,213 Q264,281 200,272" />
+
+                        <!-- 5. CRM(307.8,231.5) → Action(146.7,250.8) -->
+                        <path class="conn-line" d="M200,272 Q136,275 79,216" />
+
+                        <!-- Animated Data Packets -->
+                        <circle class="data-packet" r="5" fill="#10B981" filter="url(#lineGlow)">
+                            <animateMotion dur="2.0s" repeatCount="indefinite" path="M70,99 Q136,21 200,26"/>
+                        </circle>
+                        <circle class="data-packet" r="5" fill="#C084FC" filter="url(#lineGlow)">
+                            <animateMotion dur="2.1s" repeatCount="indefinite" path="M200,26 Q264,17 329.1,94"/>
+                        </circle>
+                        <circle class="data-packet" r="5" fill="#8B5CF6" filter="url(#lineGlow)">
+                            <animateMotion dur="2.2s" repeatCount="indefinite" path="M329.1,94 Q352,157.5 325.1,213"/>
+                        </circle>
+                        <circle class="data-packet" r="5" fill="#3B82F6" filter="url(#lineGlow)">
+                            <animateMotion dur="2.3s" repeatCount="indefinite" path="M325.1,213 Q264,281 200,272"/>
+                        </circle>
+                        <circle class="data-packet" r="5" fill="#06B6D4" filter="url(#lineGlow)">
+                            <animateMotion dur="2.4s" repeatCount="indefinite" path="M200,272 Q136,275 79,216"/>
+                        </circle>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header" data-animate="fade-up">
+                <span class="section-tag">Our Services</span>
+                <h2 class="section-title">End-to-End <span class="gradient-text">AI Automation</span></h2>
+                <p class="section-subtitle">We design, build, and deploy intelligent automation systems tailored to your business needs.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card" data-animate="fade-up" data-delay="0">
+                    <div class="service-icon" style="background: linear-gradient(135deg, #6366F1 0%, #6366F1 100%);">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+                    </div>
+                    <h3>AI Voice Agent & Receptionist</h3>
+                    <p>24/7 AI voice agent built on Vapi and Retell that answers calls, qualifies callers, and books directly into your calendar — never miss a lead again.</p>
+                </div>
+                <div class="service-card" data-animate="fade-up" data-delay="100">
+                    <div class="service-icon" style="background: linear-gradient(135deg, #3B82F6 0%, #3B82F6 100%);">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.9"><path d="M14.35 1.8 4.7 14.7a.34.34 0 0 0 .27.54h7.34l-2.62 7.91a.34.34 0 0 0 .61.25l9.61-12.97a.34.34 0 0 0-.27-.54l-7.09-.06 2.14-7.98a.34.34 0 0 0-.32-.32Z"/></svg>
+                    </div>
+                    <h3>Speed-to-Lead Agent</h3>
+                    <p>Contacts new leads within 60 seconds of form submission via call, text, or email — before your competitors even see the notification.</p>
+                </div>
+                <div class="service-card" data-animate="fade-up" data-delay="200">
+                    <div class="service-icon" style="background: linear-gradient(135deg, #D946EF 0%, #D946EF 100%);">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M2 2h20l-8 10v6l-4 4v-10L2 2z"/></svg>
+                    </div>
+                    <h3>Lead Qualifier & Scorer</h3>
+                    <p>Automatically scores and routes inbound leads based on fit and intent, sending hot leads straight to sales and nurturing the rest.</p>
+                </div>
+                <div class="service-card" data-animate="fade-up" data-delay="300">
+                    <div class="service-icon" style="background: linear-gradient(135deg, #10B981 0%, #34D399 100%);">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M22 12a10 10 0 1 1-2.93-7.07"/><path d="M22 2v6h-6"/><circle cx="12" cy="10" r="2"/><path d="M8 18a4 4 0 0 1 8 0"/></svg>
+                    </div>
+                    <h3>Lead Reactivation Agent</h3>
+                    <p>Re-engages cold leads sitting in your CRM with personalized outreach sequences, turning forgotten contacts back into booked calls.</p>
+                </div>
+                <div class="service-card" data-animate="fade-up" data-delay="400">
+                    <div class="service-icon" style="background: linear-gradient(135deg, #8B5CF6 0%, #8B5CF6 100%);">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 6 10 7L22 6"/></svg>
+                    </div>
+                    <h3>AI Cold Outreach Agent</h3>
+                    <p>Finds and researches ideal prospects, then sends hyper-personalized cold emails at scale — built to book meetings, not just fill inboxes.</p>
+                </div>
+                <div class="service-card" data-animate="fade-up" data-delay="500">
+                    <div class="service-icon" style="background: linear-gradient(135deg, #06B6D4 0%, #06B6D4 100%);">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                    </div>
+                    <h3>Content Repurposing Engine</h3>
+                    <p>Turns one piece of content into a month of posts — auto-generates, formats, and schedules across Instagram, Facebook, LinkedIn, X and Pinterest.</p>
+                </div>
+                <div class="service-card" data-animate="fade-up" data-delay="500">
+                    <div class="service-icon" style="background: linear-gradient(135deg, #F59E0B 0%, #F59E0B 100%);">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+                    </div>
+                    <h3>Invoice & Payments Agent</h3>
+                    <p>Captures invoices, matches them to purchase orders, and automatically follows up on overdue payments — before cash flow becomes a problem.</p>
+                </div>
+                <div class="service-card" data-animate="fade-up" data-delay="500">
+                    <div class="service-icon" style="background: linear-gradient(135deg, #14B8A6 0%, #14B8A6 100%);">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                    </div>
+                    <h3>Inbox Triage Agent</h3>
+                    <p>Reads, categorizes, and routes incoming emails automatically — flagging urgent messages and clearing inbox clutter without lifting a finger.</p>
+                </div>
+                <div class="service-card" data-animate="fade-up" data-delay="500">
+                    <div class="service-icon" style="background: linear-gradient(135deg, #A855F7 0%, #A855F7 100%);">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.85"/><circle cx="12" cy="3.75" r="1.9"/><circle cx="4.85" cy="16.15" r="1.9"/><circle cx="19.15" cy="16.15" r="1.9"/><path d="M12 9.15V5.65M9.55 13.45l-2.8 1.65M14.45 13.45l2.8 1.65"/></svg>
+                    </div>
+                    <h3>AI Agents</h3>
+                    <p>Autonomous AI agents powered by OpenAI, Claude, and Gemini. Handle customer support, research, and decision-making.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-us" id="why-us">
+        <div class="container">
+            <div class="section-header" data-animate="fade-up">
+                <span class="section-tag">Why Zimal AI</span>
+                <h2 class="section-title">Built for <span class="gradient-text">Results</span></h2>
+            </div>
+            <div class="why-grid">
+                <div class="why-card" data-animate="fade-up" data-delay="0">
+                    <div class="why-icon">⚡</div>
+                    <h3>Fast Delivery</h3>
+                    <p>Most automations deployed within 3–7 business days. We prioritize speed without compromising quality.</p>
+                </div>
+                <div class="why-card" data-animate="fade-up" data-delay="100">
+                    <div class="why-icon">🧠</div>
+                    <h3>AI Expertise</h3>
+                    <p>Deep expertise in OpenAI, Claude, Gemini, and open-source LLMs. We know which AI fits your use case.</p>
+                </div>
+                <div class="why-card" data-animate="fade-up" data-delay="200">
+                    <div class="why-icon">🔗</div>
+                    <h3>1000+ Integrations</h3>
+                    <p>From CRMs to e-commerce, we integrate with virtually any platform using native connectors or custom APIs.</p>
+                </div>
+                <div class="why-card" data-animate="fade-up" data-delay="300">
+                    <div class="why-icon">📈</div>
+                    <h3>ROI Focused</h3>
+                    <p>Every automation is designed to save time, reduce costs, and drive measurable business outcomes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process" id="process">
+        <div class="container">
+            <div class="section-header" data-animate="fade-up">
+                <span class="section-tag">Our Process</span>
+                <h2 class="section-title">How We <span class="gradient-text">Work</span></h2>
+            </div>
+            <div class="process-timeline">
+                <div class="process-step" data-animate="fade-up" data-delay="0">
+                    <div class="step-number">01</div>
+                    <div class="step-content">
+                        <h3>Discovery</h3>
+                        <p>We analyze your workflows, pain points, and goals to identify the highest-impact automation opportunities.</p>
+                    </div>
+                </div>
+                <div class="process-arrow">↓</div>
+                <div class="process-step" data-animate="fade-up" data-delay="100">
+                    <div class="step-number">02</div>
+                    <div class="step-content">
+                        <h3>Workflow Design</h3>
+                        <p>We architect the automation blueprint, mapping data flows, triggers, actions, and error handling.</p>
+                    </div>
+                </div>
+                <div class="process-arrow">↓</div>
+                <div class="process-step" data-animate="fade-up" data-delay="200">
+                    <div class="step-number">03</div>
+                    <div class="step-content">
+                        <h3>Development</h3>
+                        <p>We build your automation using n8n, Make.com, or custom code—rigorous, clean, and scalable.</p>
+                    </div>
+                </div>
+                <div class="process-arrow">↓</div>
+                <div class="process-step" data-animate="fade-up" data-delay="300">
+                    <div class="step-number">04</div>
+                    <div class="step-content">
+                        <h3>Testing</h3>
+                        <p>Comprehensive QA across edge cases, load testing, and validation to ensure bulletproof reliability.</p>
+                    </div>
+                </div>
+                <div class="process-arrow">↓</div>
+                <div class="process-step" data-animate="fade-up" data-delay="400">
+                    <div class="step-number">05</div>
+                    <div class="step-content">
+                        <h3>Deployment</h3>
+                        <p>Smooth go-live with monitoring setup, documentation, and team training for full adoption.</p>
+                    </div>
+                </div>
+                <div class="process-arrow">↓</div>
+                <div class="process-step" data-animate="fade-up" data-delay="500">
+                    <div class="step-number">06</div>
+                    <div class="step-content">
+                        <h3>Ongoing Support</h3>
+                        <p>Continuous optimization, maintenance, and scaling as your business evolves and grows.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-content" data-animate="fade-right">
+                    <span class="section-tag">About Zimal AI</span>
+                    <h2 class="section-title">Years of Experience.<br>Modern <span class="gradient-text">AI Engineering.</span></h2>
+                    <p>Zimal AI combines years of freelance data automation experience with cutting-edge AI workflow engineering. We don't just connect apps—we build intelligent systems that think, adapt, and scale.</p>
+                    <ul class="about-features">
+                        <li><span class="feature-check">✓</span> Custom-built automations</li>
+                        <li><span class="feature-check">✓</span> Reliable long-term support</li>
+                        <li><span class="feature-check">✓</span> Enterprise-grade security</li>
+                        <li><span class="feature-check">✓</span> Scalable architecture</li>
+                    </ul>
+                </div>
+                <div class="about-visual" data-animate="fade-left">
+                    <div class="about-card glass">
+                        <div class="about-card-header">
+                            <div class="dot red"></div>
+                            <div class="dot yellow"></div>
+                            <div class="dot green"></div>
+                            <span class="about-card-title">automation_pipeline.py</span>
+                        </div>
+                        <pre class="code-block"><code><span class="code-keyword">from</span> zimal <span class="code-keyword">import</span> Workflow, AIAgent
+
+<span class="code-comment"># Initialize intelligent pipeline</span>
+workflow = Workflow(
+    name=<span class="code-string">"lead_qualification"</span>,
+    ai_model=<span class="code-string">"gpt-4"</span>,
+    integrations=[<span class="code-string">"hubspot"</span>, <span class="code-string">"slack"</span>]
+)
+
+<span class="code-comment"># Deploy with monitoring</span>
+workflow.deploy(
+    auto_scale=<span class="code-bool">True</span>,
+    monitoring=<span class="code-bool">True</span>
+)</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <div class="section-header" data-animate="fade-up">
+                <span class="section-tag">FAQ</span>
+                <h2 class="section-title">Common <span class="gradient-text">Questions</span></h2>
+            </div>
+            <div class="faq-list" data-animate="fade-up">
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>How long does automation take to build?</span>
+                        <svg class="faq-icon" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Most standard automations are delivered within 3–7 business days. Complex enterprise workflows with multiple integrations may take 1–2 weeks. We provide a detailed timeline during our discovery call.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Do you use n8n for automation?</span>
+                        <svg class="faq-icon" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes, n8n is one of our primary tools. We also work with Make.com, Zapier, and custom Python/Node.js solutions depending on your requirements, data privacy needs, and scalability goals.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Can you build AI agents for our business?</span>
+                        <svg class="faq-icon" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Absolutely. We build AI agents using OpenAI, Claude, Gemini, and open-source models. These agents can handle customer support, data research, content generation, decision-making, and more.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Can you integrate with our existing APIs?</span>
+                        <svg class="faq-icon" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes, we integrate with REST APIs, GraphQL, webhooks, and SOAP services. Whether you have a custom internal API or need to connect to third-party services, we handle the full integration.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Can you automate our existing software?</span>
+                        <svg class="faq-icon" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Most likely yes. If your software has an API, webhook support, or integration capabilities, we can automate it. For legacy systems without APIs, we can explore RPA (Robotic Process Automation) solutions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-wrapper">
+                <div class="contact-content" data-animate="fade-right">
+                    <span class="section-tag">Get Started</span>
+                    <h2 class="section-title">Ready to Automate<br>Your <span class="gradient-text">Business?</span></h2>
+                    <p>Book a free 30-minute consultation. We'll discuss your workflows, identify automation opportunities, and propose a tailored solution.</p>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon">📧</div>
+                            <div>
+                                <div class="contact-label">Email</div>
+                                <div class="contact-value">contact@zimalai.net</div>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">💬</div>
+                            <div>
+                                <div class="contact-label">WhatsApp</div>
+                                <div class="contact-value">+92 (313) 422-6040</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form-wrapper" data-animate="fade-left">
+                    <form class="contact-form glass" id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" placeholder="Your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="you@company.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="project">Project Description</label>
+                            <textarea id="project" name="project" rows="4" placeholder="Tell us about the workflows you want to automate..." required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="budget">Budget (Optional)</label>
+                            <select id="budget" name="budget">
+                                <option value="">Select budget range</option>
+                                <option value="1k-5k">$1,000 – $5,000</option>
+                                <option value="5k-10k">$5,000 – $10,000</option>
+                                <option value="10k-25k">$10,000 – $25,000</option>
+                                <option value="25k+">$25,000+</option>
+                            </select>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary btn-full">
+                                <span>Book Consultation</span>
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4.167 10h11.666m0 0L10 4.167M15.833 10L10 15.833" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </button>
+                            <a href="https://wa.me/15550000000" class="btn btn-whatsapp btn-full" target="_blank" rel="noopener">
+                                <span>💬 Message on WhatsApp</span>
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="footer-logo">
+                        <img src="img/favicon.png" alt="Zimal AI icon" class="logo-icon-img">
+                        <div class="logo-text-group">
+                            <img src="img/logo-icon_2.svg" alt="Zimal AI" class="logo-wordmark-img">
+                            <span class="logo-tagline">Automate <span class="amp">&amp;</span> Grow</span>
+                        </div>
+                    </a>
+                    <p class="footer-tagline">Automating growth, one workflow at a time.</p>
+                    <p class="footer-desc">Enterprise AI automation agency building intelligent workflows that save time, reduce costs, and scale businesses.</p>
+                </div>
+                <div class="footer-links-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#services">n8n Automation</a></li>
+                        <li><a href="#services">Make.com Automation</a></li>
+                        <li><a href="#services">AI Agents</a></li>
+                        <li><a href="#services">API Integrations</a></li>
+                        <li><a href="#services">WhatsApp Automation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#process">Process</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Zimal AI. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <div class="toast-content">
+            <span class="toast-icon">✓</span>
+            <span class="toast-message">Message sent successfully!</span>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
