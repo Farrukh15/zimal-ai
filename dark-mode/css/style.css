@@ -307,7 +307,7 @@ body {
     position: relative;
     z-index: 1;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;   /* ← changed from 1fr 1fr */
     gap: 24px;
     align-items: center;
 }
@@ -466,9 +466,7 @@ body {
     width: 100%;
     max-width: 560px;
     aspect-ratio: 4/3;
-    margin: 0 auto;
-    margin-top: -32px;
-    left: 52px;
+    margin: 48px auto 0;   /* ← was: margin: 0 auto; + margin-top: -32px */
     animation: canvasFloat 5s ease-in-out infinite;
 }
 
@@ -632,6 +630,29 @@ body {
 .t-logo:hover {
     opacity: 1;
     filter: grayscale(0%);
+}
+
+@media (min-width: 968px) {
+    .hero-container {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .workflow-canvas {
+        margin-top: -32px;
+        left: 52px;
+    }
+
+    .hero-visual {
+        margin-top: 0;
+    }
+}
+
+@media (max-width: 967px) {
+    .hero-container {
+        grid-template-columns: 1fr;
+    }
+    .hero-content { order: 1; }
+    .hero-visual  { order: 2; }
 }
 
 /* ========================================
@@ -992,6 +1013,14 @@ section {
 .code-string { color: #86efac; }
 .code-comment { color: var(--text-muted); }
 .code-bool { color: #f472b6; }
+
+@media (max-width: 967px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+    .about-content { order: 1; }
+    .about-visual  { order: 2; }
+}
 
 /* ========================================
    WORK / PORTFOLIO
@@ -1537,9 +1566,6 @@ section {
         text-align: center;
     }
 
-    .hero-content {
-        order: 2;
-    }
 
     .hero-visual {
         order: 1;
@@ -1577,7 +1603,6 @@ section {
     }
 
     .about-visual {
-        order: -1;
         margin-bottom: 40px;
     }
 
