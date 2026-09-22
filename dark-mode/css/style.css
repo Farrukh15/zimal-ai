@@ -1529,13 +1529,6 @@ section {
     transition: opacity 0.7s ease, transform 0.7s ease;
 }
 
-.hero-title[data-animate],
-.hero-subtitle[data-animate] {
-    opacity: 1;
-    transform: none;
-    transition: none;
-}
-
 [data-animate].animated {
     opacity: 1;
     transform: translateY(0);
