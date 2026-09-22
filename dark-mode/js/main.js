@@ -13,16 +13,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Scroll behavior for navbar
     let lastScroll = 0;
+    let navTicking = false;
     window.addEventListener('scroll', () => {
-        const currentScroll = window.pageYOffset;
-
-        if (currentScroll > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
+        if (!navTicking) {
+            requestAnimationFrame(() => {
+                const currentScroll = window.pageYOffset;
+                if (currentScroll > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+                lastScroll = currentScroll;
+                navTicking = false;
+            });
+            navTicking = true;
         }
-
-        lastScroll = currentScroll;
     });
 
     // Mobile menu toggle
@@ -343,7 +348,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    window.addEventListener('scroll', highlightNav);
+    let navHighlightTicking = false;
+    window.addEventListener('scroll', () => {
+        if (!navHighlightTicking) {
+            requestAnimationFrame(() => {
+                highlightNav();
+                navHighlightTicking = false;
+            });
+            navHighlightTicking = true;
+        }
+    });
     highlightNav();
 
     // ========================================
