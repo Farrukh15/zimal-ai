@@ -1,0 +1,10 @@
+worker.js
+functions/
+wrangler.jsonc
+wrangler.toml
+app.py
+README.md
+node_modules/
+.git/
+.env
+.dev.vars
