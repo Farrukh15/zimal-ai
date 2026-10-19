@@ -152,33 +152,89 @@ document.addEventListener('DOMContentLoaded', () => {
     // ========================================
     // CONTACT FORM
     // ========================================
+    
     const contactForm = document.getElementById('contactForm');
     const toast = document.getElementById('toast');
+    
+    let contactToastTimer;
+    
+    if (contactForm && toast) {
+    
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+    
+            const submitBtn = contactForm.querySelector(
+                'button[type="submit"]'
+            );
+    
+            const btnText = submitBtn.querySelector('span');
+            const originalText = btnText.textContent;
+    
+            const toastMessage = toast.querySelector('.toast-message');
+            const toastIcon = toast.querySelector('.toast-icon');
+    
+            // Prevent duplicate submissions
+            if (submitBtn.disabled) return;
+    
+            submitBtn.disabled = true;
+            btnText.textContent = 'Sending...';
+    
+            try {
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: new FormData(contactForm),
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+    
+                const result = await response.json().catch(() => null);
+    
+                if (!response.ok || !result || !result.success) {
+                    throw new Error(
+                        result?.message || 'Submission failed'
+                    );
+                }
+    
+                // Confirm successful submission
+                toastMessage.textContent =
+                    'Request received! We will contact you soon.';
+    
+                toastIcon.textContent = '✓';
+    
+                // Clear form only on success
+                contactForm.reset();
+    
+            } catch (error) {
+    
+                console.error('Contact submission failed:', error);
+    
+                toastMessage.textContent =
+                    'Unable to send. Please try again or email contact@zimalai.net.';
+    
+                toastIcon.textContent = '!';
+    
+                // Keep form values so user can retry
+            } finally {
+    
+                submitBtn.disabled = false;
+                btnText.textContent = originalText;
+    
+                // Display notification
+                clearTimeout(contactToastTimer);
+    
+                toast.setAttribute('role', 'status');
+                toast.setAttribute('aria-live', 'polite');
+    
+                toast.classList.add('show');
+    
+                contactToastTimer = setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 5000);
+            }
+        });
+    }
 
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-
-        // Simulate form submission
-        const submitBtn = contactForm.querySelector('button[type="submit"]');
-        const originalText = submitBtn.innerHTML;
-        submitBtn.innerHTML = '<span>Sending...</span>';
-        submitBtn.disabled = true;
-
-        setTimeout(() => {
-            // Show toast
-            toast.classList.add('show');
-
-            // Reset form
-            contactForm.reset();
-            submitBtn.innerHTML = originalText;
-            submitBtn.disabled = false;
-
-            // Hide toast after 3s
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, 3000);
-        }, 1500);
-    });
 
     // ========================================
     // BUTTON RIPPLE EFFECT
