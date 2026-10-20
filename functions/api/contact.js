@@ -74,11 +74,13 @@ export async function onRequestPost({ request, env }) {
 
         const allowedBudgets = [
             "",
-            "1k-5k",
-            "5k-10k",
-            "10k-25k",
-            "25k+"
+            "under-1k",
+            "1k-3k",
+            "3k-5k",
+            "5k+",
+            "unsure"
         ];
+
 
         if (
             !name ||
